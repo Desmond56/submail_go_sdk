@@ -44,8 +44,8 @@ func Post(requesturl string, postdata map[string]string) string {
 
 	body := strings.NewReader(r.Form.Encode())
 
-	//打印请求体
-	//fmt.Println("request:", r.Form.Encode())
+	// 打印请求体
+	// fmt.Println("request:", r.Form.Encode())
 
 	retstr, err := http.Post(requesturl, "application/x-www-form-urlencoded;charset=utf-8", body)
 
@@ -68,7 +68,7 @@ func MultipartPost(requesturl string, postdata map[string]string) string {
 			attachments := strings.Split(val, ",")
 			if len(attachments) > 0 {
 				for _, filename := range attachments {
-					//fmt.Println("file:", filename)
+					// fmt.Println("file:", filename)
 					file, err := os.Open(filename)
 					if err != nil {
 						return err.Error()
@@ -91,8 +91,8 @@ func MultipartPost(requesturl string, postdata map[string]string) string {
 	}
 	contentType := writer.FormDataContentType()
 	writer.Close()
-	//打印请求体
-	//fmt.Println("request:", string(body.Bytes()))
+	// 打印请求体
+	// fmt.Println("request:", string(body.Bytes()))
 
 	resp, err := http.Post(requesturl, contentType, body)
 	if err != nil {

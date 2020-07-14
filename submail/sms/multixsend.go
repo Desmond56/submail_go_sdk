@@ -2,7 +2,7 @@ package sms
 
 import (
 	"encoding/json"
-	lib "submail_go_sdk/submail/lib"
+	lib "github.com/Desmond56/submail_go_sdk/submail/lib"
 )
 
 type multixsend struct {
@@ -50,7 +50,7 @@ func (this *multixsend) MultiXsend() string {
 		request["tag"] = this.tag
 	}
 	request["signature"] = lib.CreateSignature(request, config)
-	//v2 数字签名 multi 不参与计算
+	// v2 数字签名 multi 不参与计算
 
 	data, err := json.Marshal(this.multi)
 	if err == nil {
